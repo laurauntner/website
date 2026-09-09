@@ -3,521 +3,47 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal website of Laura Untner, doctoral candidate and research associate in Digital Literary Studies at Freie Universität Berlin.">
     <title>Laura Untner</title>
-    <style>
-
-      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap');
-
-      /* ---------- Reset ---------- */
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      /* ---------- Design tokens ---------- */
-      :root {
-        --ink: #0f0f10;
-        --muted: #63646c;
-        --faint: #9a9ba3;
-        --rule: #e7e7eb;
-        --bg: #ffffff;
-        --accent: #2f6feb;
-        --accent-soft: rgba(47, 111, 235, 0.08);
-        --accent-line: rgba(47, 111, 235, 0.32);
-        --ease: cubic-bezier(0.4, 0, 0.2, 1);
-
-        --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
-        --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-
-        --sp-1: 0.4rem;
-        --sp-2: 0.7rem;
-        --sp-3: 1.1rem;
-        --sp-4: 1.8rem;
-        --sp-5: 2.8rem;
-        --sp-6: 4.5rem;
-      }
-
-      /* ---------- Global ---------- */
-      html {
-        font-size: 16px;
-        scroll-behavior: smooth;
-        scrollbar-color: var(--accent) #ffffff;
-      }
-
-      ::-webkit-scrollbar {
-        width: 10px;
-      }
-
-      ::-webkit-scrollbar-track {
-        background: #ffffff;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: var(--accent);
-        border-radius: 0;
-      }
-
-      ::selection {
-        background: var(--accent);
-        color: #ffffff;
-      }
-
-      :focus-visible {
-        outline: 2px solid var(--accent);
-        outline-offset: 3px;
-      }
-
-      a {
-        transition: color .15s var(--ease), border-color .15s var(--ease), background-color .15s var(--ease);
-      }
-
-      body {
-        font-family: var(--font-sans);
-        background: var(--bg);
-        color: var(--ink);
-        line-height: 1.7;
-        padding: var(--sp-6) 2rem 8rem;
-        -webkit-font-smoothing: antialiased;
-      }
-
-      .page {
-        max-width: 680px;
-        margin: 0 auto;
-      }
-
-      /* ---------- Header ---------- */
-      header {
-        margin-bottom: var(--sp-5);
-      }
-
-      .header-top {
-        display: flex;
-        align-items: flex-start;
-        gap: 1.5rem;
-      }
-
-      .avatar {
-        flex: 0 0 auto;
-        width: 160px;
-      }
-
-      .avatar img {
-        display: block;
-        width: 100%;
-        height: auto;
-        aspect-ratio: 19 / 20;
-        object-fit: cover;
-        object-position: 50% 5%;
-        border-radius: 6px;
-        border: 1px solid var(--rule);
-      }
-
-      .avatar figcaption {
-        margin-top: 0.4rem;
-        font-family: var(--font-mono);
-        font-size: 0.65rem;
-        color: var(--faint);
-        text-align: center;
-      }
-
-      .header-info {
-        flex: 0 1 auto;
-        max-width: 430px;
-        min-width: 0;
-      }
-
-      h1 {
-        font-family: var(--font-mono);
-        font-size: 1.85rem;
-        font-weight: 600;
-        letter-spacing: -0.01em;
-        line-height: 1.3;
-        margin-bottom: var(--sp-1);
-      }
-
-      .subtitle {
-        font-family: var(--font-mono);
-        font-style: normal;
-        color: var(--muted);
-        font-size: 0.78rem;
-        line-height: 1.5;
-      }
-
-      .contact {
-        margin-top: var(--sp-3);
-        font-family: var(--font-mono);
-        font-size: 0.7rem;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.35rem;
-      }
-
-      .contact-row {
-        display: flex;
-        gap: 0.35rem;
-      }
-
-      .contact a {
-        color: var(--muted);
-        text-decoration: none;
-        padding: 0.16rem 0.45rem;
-        border: 1px solid var(--rule);
-      }
-
-      .contact a:hover {
-        color: var(--accent);
-        border-color: var(--accent-line);
-      }
-
-      /* ---------- Nav ---------- */
-      .site-nav {
-        position: sticky;
-        top: 0;
-        background: var(--bg);
-        z-index: 20;
-        margin-bottom: 1rem;
-        box-shadow: 0 8px 16px -12px rgba(15, 15, 16, 0.16);
-      }
-
-      nav {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        row-gap: 0.5rem;
-        column-gap: 1.4rem;
-        padding: 0.9rem 0;
-      }
-
-      nav a {
-        font-family: var(--font-mono);
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: var(--muted);
-        text-decoration: none;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        padding-bottom: 0.3rem;
-        border-bottom: 2px solid transparent;
-      }
-
-      nav a:hover,
-      nav a.active {
-        color: var(--ink);
-        border-bottom-color: var(--accent);
-      }
-
-      .nav-home {
-        display: inline-flex;
-        align-items: center;
-        padding-bottom: 0;
-        border-bottom: none !important;
-        color: var(--accent);
-        opacity: 0.85;
-      }
-
-      .nav-home:hover {
-        opacity: 1;
-      }
-
-      .nav-home .dino-svg,
-      .nav-home .legs-a,
-      .nav-home .legs-b {
-        animation: none;
-      }
-
-      .nav-home:hover .dino-svg {
-        animation: dino-bob 0.9s steps(2, end) infinite;
-      }
-
-      .nav-home:hover .legs-a {
-        animation: legswap 0.9s steps(1, end) infinite;
-      }
-
-      .nav-home:hover .legs-b {
-        animation: legswap 0.9s steps(1, end) infinite reverse;
-      }
-
-      .dino-svg {
-        display: block;
-        shape-rendering: crispEdges;
-        image-rendering: pixelated;
-      }
-
-      @keyframes dino-bob {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-2px); }
-      }
-
-      @keyframes legswap {
-        0%, 49% { opacity: 1; }
-        50%, 100% { opacity: 0; }
-      }
-
-      .subnav {
-        font-family: var(--font-mono);
-        font-size: 0.78rem;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.45rem;
-        padding: 0.7rem 0 0.9rem;
-      }
-
-      .subnav:empty {
-        display: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .subnav a {
-        color: var(--muted);
-        text-decoration: none;
-        padding-left: 0.7rem;
-        border-left: 2px solid var(--rule);
-        line-height: 1.3;
-      }
-
-      .subnav a:hover {
-        color: var(--ink);
-        border-left-color: var(--faint);
-      }
-
-      .subnav a.active {
-        color: var(--accent);
-        border-left-color: var(--accent);
-        font-weight: 500;
-      }
-
-      /* On wide viewports the subnav docks in the left margin and tracks scroll. */
-      @media (min-width: 1200px) {
-        .subnav {
-          position: fixed;
-          top: 50%;
-          right: calc(50% + 410px);
-          transform: translateY(-50%);
-          width: 190px;
-          padding: 0;
-        }
-      }
-
-      /* ---------- Sections ---------- */
-      .page section + section {
-        margin-top: var(--sp-6);
-        padding-top: var(--sp-5);
-        border-top: 1px solid var(--rule);
-      }
-
-      .section-title {
-        font-family: var(--font-mono);
-        font-size: 1.3rem;
-        font-weight: 600;
-        margin-bottom: var(--sp-4);
-        color: var(--ink);
-        scroll-margin-top: 5.5rem;
-      }
-
-      .section-title::before {
-        content: '## ';
-        color: var(--accent);
-      }
-
-      .about-text p {
-        margin-bottom: 1.1rem;
-        max-width: 600px;
-        font-size: 0.98rem;
-      }
-
-      .about-text p:last-child {
-        margin-bottom: 0;
-      }
-
-      .about-text a {
-        color: var(--accent);
-        text-decoration: underline;
-        text-decoration-color: rgba(47, 111, 235, 0.35);
-      }
-
-      .about-text a:hover {
-        text-decoration-color: var(--ink);
-        color: var(--ink);
-      }
-
-      h3 {
-        font-family: var(--font-mono);
-        font-size: 0.8rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--muted);
-        margin: 2.4rem 0 1rem;
-        scroll-margin-top: 6.5rem;
-      }
-
-      h3::before {
-        content: '/// ';
-        color: var(--accent);
-      }
-
-      /* ---------- Entries ---------- */
-      .entry {
-        display: grid;
-        grid-template-columns: 108px 1fr;
-        gap: 0 1.5rem;
-        margin-bottom: 2.2rem;
-      }
-
-      .entry-date {
-        font-family: var(--font-mono);
-        font-size: 0.85rem;
-        color: var(--muted);
-        padding-top: 0.18rem;
-        line-height: 1.35;
-      }
-
-      .entry-title {
-        font-size: 0.96rem;
-        font-weight: 600;
-        line-height: 1.3;
-        margin-bottom: 0.3rem;
-      }
-
-      .entry-title em {
-        font-weight: 400;
-        font-style: italic;
-      }
-
-      .entry-body {
-        font-size: 0.88rem;
-        color: var(--muted);
-        line-height: 1.4;
-      }
-
-      .entry-body + .entry-body {
-        margin-top: 0.6rem;
-      }
-
-      .entry-body a {
-        color: var(--accent);
-        text-decoration: underline;
-        text-decoration-color: rgba(47, 111, 235, 0.35);
-      }
-
-      .entry-body a:hover {
-        color: var(--ink);
-        text-decoration-color: var(--ink);
-      }
-
-      .tag {
-        font-family: var(--font-mono);
-        font-size: 0.8rem;
-        font-weight: 600;
-        color: var(--accent);
-        margin-left: 0.3rem;
-        white-space: nowrap;
-      }
-
-      .tag::before {
-        content: '[';
-      }
-
-      .tag::after {
-        content: ']';
-      }
-
-      .focus-list {
-        list-style: none;
-      }
-
-      .focus-list li {
-        padding: 0.2rem 0 0.2rem 1.3rem;
-        font-size: 0.98rem;
-        line-height: 1.35;
-        position: relative;
-      }
-
-      .focus-list li::before {
-        content: '■';
-        color: var(--accent);
-        position: absolute;
-        left: 0;
-      }
-
-      .focus-list li span {
-        color: var(--muted);
-        font-size: 0.88rem;
-      }
-
-      /* ---------- Back to top ---------- */
-      .back-to-top {
-        position: fixed;
-        right: 1.5rem;
-        bottom: 1.5rem;
-        width: 34px;
-        height: 34px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--bg);
-        border: 1px solid var(--accent-line);
-        border-radius: 2px;
-        color: var(--accent);
-        font-family: var(--font-mono);
-        line-height: 1;
-        cursor: pointer;
-        box-shadow: 0 4px 14px rgba(15, 15, 16, 0.14);
-        opacity: 0;
-        transform: translateY(8px);
-        pointer-events: none;
-        transition: opacity 0.2s var(--ease), transform 0.2s var(--ease), background-color 0.15s var(--ease), color 0.15s var(--ease);
-        z-index: 30;
-      }
-
-      .back-to-top::before {
-        content: '↑';
-        font-size: 1rem;
-      }
-
-      .back-to-top.visible {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-
-      .back-to-top:hover {
-        background: var(--accent);
-        color: #ffffff;
-      }
-
-      /* ---------- Responsive ---------- */
-      @media (max-width: 600px) {
-        .header-top {
-          gap: 1.1rem;
-        }
-
-        .avatar {
-          width: 72px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .entry {
-          grid-template-columns: 1fr;
-        }
-
-        .entry-date {
-          margin-bottom: 0.3rem;
-        }
-
-        nav {
-          column-gap: 1rem;
-        }
-      }
-    </style>
+    <meta name="description" content="Personal website of Laura Untner, doctoral candidate and research associate in Digital Literary Studies at Freie Universität Berlin.">
+    <link rel="canonical" href="https://laurauntner.github.io/website/">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="Laura Untner">
+    <meta property="og:title" content="Laura Untner — Digital Literary Studies">
+    <meta property="og:description" content="Personal website of Laura Untner, doctoral candidate and research associate in Digital Literary Studies at Freie Universität Berlin.">
+    <meta property="og:url" content="https://laurauntner.github.io/website/">
+    <meta property="og:image" content="https://laurauntner.github.io/website/image-small.jpg">
+    <meta property="og:image:width" content="240">
+    <meta property="og:image:height" content="320">
+    <meta property="og:locale" content="en_US">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+    <link rel="stylesheet" href="style.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Laura Untner",
+      "url": "https://laurauntner.github.io/website/",
+      "image": "https://laurauntner.github.io/website/image-small.jpg",
+      "jobTitle": "Doctoral Candidate and Research Associate",
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "Freie Universität Berlin",
+        "url": "https://www.fu-berlin.de/"
+      },
+      "email": "mailto:laura.untner@fu-berlin.de",
+      "sameAs": [
+        "https://orcid.org/0000-0002-9649-0870",
+        "https://www.researchgate.net/profile/Laura-Untner/publications",
+        "https://sappho-digital.com"
+      ]
+    }
+    </script>
   </head>
   <body>
     <div class="page">
@@ -631,7 +157,7 @@
         </ul>
         <h3 id="dissertation">Dissertation</h3>
         <div class="entry">
-          <div class="entry-date">since 2024</div>
+          <div class="entry-date">2024–[2027]</div>
           <div class="entry-content">
             <div class="entry-title">Digitale Rezeptionswissenschaft. Intertextualität, digitale
               Methoden und formale Ontologien am Beispiel der deutschsprachigen literarischen
@@ -642,6 +168,8 @@
             <div class="entry-body">Friedrich Schlegel Graduate School of Literary Studies, Freie
               Universität Berlin, supervisors: Frank Fischer (FU Berlin), Anita Traninger (FU
               Berlin), Paula Wojcik (University of Vienna)</div>
+            <div class="entry-body"><a href="https://sappho-digital.com" target="_blank"
+              >sappho-digital.com</a></div>
           </div>
         </div>
       </section>
@@ -762,7 +290,7 @@
           <div class="entry-date">2026 (in prep.)</div>
           <div class="entry-content">
             <div class="entry-title">Der narrativierende Dichterroman. Siegfried Obermeiers
-                <em>Sappho</em> (2001)</div>
+                <em><strong>Sappho</strong></em> (2001)</div>
             <div class="entry-body">In: Ilgner, Immer, Irsigler and Schmidt (Eds.): <em>Der
                 zeitgenössische Dichterroman. Biofiktionale Schriftstellererzählungen der
                 deutschsprachigen Gegenwartsliteratur seit dem Jahr 2000</em>. Stuttgart: Metzler
@@ -783,7 +311,7 @@
           <div class="entry-date">2026</div>
           <div class="entry-content">
             <div class="entry-title">»… nicht gewöhnt an diese spröde Materie«. Zur Vermittlung der
-              Rechtsakten Karl Kraus' in der digitalen Edition</div>
+              Rechtsakten Karl Kraus’ in der digitalen Edition</div>
             <div class="entry-body">With Johannes Knüchel. In: Bosse and Boelderl (Eds.):
                 <em>Edition als Vermittlung</em>. Berlin/Boston: De Gruyter, pp. 257–258 (Beihefte
               zu editio). <a href="https://doi.org/10.1515/9783112212059-027" target="_blank"
@@ -794,31 +322,28 @@
           <div class="entry-date">2025</div>
           <div class="entry-content">
             <div class="entry-title">From Wikidata to CIDOC CRM: A Use Case Scenario for Digital
-              Comparative Literary Studies</div>
+              Comparative Literary Studies <span class="tag">peer-reviewed</span></div>
             <div class="entry-body"><em>Journal of Open Humanities Data</em> 11, pp. 1–15. <a
-                href="https://doi.org/10.5334/johd.421" target="_blank">doi:10.5334/johd.421</a>
-              <span class="tag">peer-reviewed</span></div>
+                href="https://doi.org/10.5334/johd.421" target="_blank">doi:10.5334/johd.421</a></div>
           </div>
         </div>
         <div class="entry">
           <div class="entry-date">2025</div>
           <div class="entry-content">
             <div class="entry-title">Reading Between the Lines of Data: Critical Data Literacy,
-              Wikidata, and Sappho</div>
+              Wikidata, and Sappho <span class="tag">peer-reviewed</span></div>
             <div class="entry-body"><em>Articulations</em>. <a
-                href="https://doi.org/10.60949/JX24-FA02" target="_blank">doi:10.60949/JX24-FA02</a>
-              <span class="tag">peer-reviewed</span></div>
+                href="https://doi.org/10.60949/JX24-FA02" target="_blank">doi:10.60949/JX24-FA02</a></div>
           </div>
         </div>
         <div class="entry">
           <div class="entry-date">2024</div>
           <div class="entry-content">
             <div class="entry-title">Paul Goldmann und Arthur Schnitzler. Von Freund und Förderer zu
-              Verräter und Jugenderinnerung</div>
+              Verräter und Jugenderinnerung <span class="tag">peer-reviewed</span></div>
             <div class="entry-body"><em>Studia austriaca</em> 32, pp. 5–42. <a
                 href="https://riviste.unimi.it/index.php/StudiaAustriaca/article/view/23734"
-                target="_blank">Open access</a>
-              <span class="tag">peer-reviewed</span></div>
+                target="_blank">Open access</a></div>
           </div>
         </div>
         <div class="entry">
@@ -848,22 +373,20 @@
           <div class="entry-date">2023</div>
           <div class="entry-content">
             <div class="entry-title">Josefine Mutzenbacher: Ein pornographischer Roman von Ernst
-              Klein?</div>
+              Klein? <span class="tag">peer-reviewed</span></div>
             <div class="entry-body">With Murray G. Hall. <em>Jahrbuch für Internationale
                 Germanistik</em> 55/1, pp. 1–28. <a href="https://doi.org/10.3726/JIG551_11"
-                target="_blank">doi:10.3726/JIG551_11</a>
-              <span class="tag">peer-reviewed</span></div>
+                target="_blank">doi:10.3726/JIG551_11</a></div>
           </div>
         </div>
         <div class="entry">
           <div class="entry-date">2023</div>
           <div class="entry-content">
-            <div class="entry-title">Walter Benjamin Digital</div>
+            <div class="entry-title">Walter Benjamin Digital <span class="tag">peer-reviewed</span></div>
             <div class="entry-body">Review. <em>RIDE. A review journal for digital editions and
                 resources</em> 9/16. <a
                 href="https://ride.i-d-e.de/issues/issue-16/walter-benjamin-digital" target="_blank"
-                >ride.i-d-e.de</a>
-              <span class="tag">peer-reviewed</span></div>
+                >ride.i-d-e.de</a></div>
           </div>
         </div>
         <div class="entry">
@@ -881,36 +404,35 @@
           <div class="entry-date">2026</div>
           <div class="entry-content">
             <div class="entry-title">Canons of World Literature Contextualised: Introducing Canon
-              Shelf and Canon Curator </div>
+              Shelf and Canon Curator <span class="tag">peer-reviewed</span></div>
             <div class="entry-body">With Lisa Poggel, Viktor J. Illmer, Jonas Rohe and Frank
               Fischer. <em>Digital Humanities 2026: Book of Abstracts</em>
               <a href="https://doi.org/10.5281/zenodo.21711390" target="_blank"
-                >doi:10.5281/zenodo.21711390</a>
-              <span class="tag">peer-reviewed</span></div>
+                >doi:10.5281/zenodo.21711390</a></div>
           </div>
         </div>
         <div class="entry">
           <div class="entry-date">2026</div>
           <div class="entry-content">
             <div class="entry-title">Semantic Modelling of Intermedial and Intertextual References
-              in Comics: A Case Study on Max Baitinger's <em>Sibylla</em> (2021)</div>
+              in Comics: A Case Study on Max Baitinger’s <em><strong>Sibylla</strong></em> (2021)
+              <span class="tag">peer-reviewed</span></div>
             <div class="entry-body">With Bernhard Oberreither and Katharina Serles. In: Schwandt et
               al. (Eds.): <em>DHd 2026: Nicht nur Text, nicht nur Daten</em>. Vienna 2026. <a
                 href="https://doi.org/10.5281/zenodo.18696375" target="_blank"
-                >doi:10.5281/zenodo.18696375</a>
-              <span class="tag">peer-reviewed</span></div>
+                >doi:10.5281/zenodo.18696375</a></div>
           </div>
         </div>
         <div class="entry">
           <div class="entry-date">2026</div>
           <div class="entry-content">
             <div class="entry-title">Not just Text, Intertext! Neue Wege der semantischen
-              Modellierung und Annotation für intertextuelle Bezüge</div>
+              Modellierung und Annotation für intertextuelle Bezüge
+              <span class="tag">peer-reviewed</span></div>
             <div class="entry-body">With Bernhard Oberreither, Jan Horstmann, Julia Nantke, Christof
               Schöch and Paula Wojcik. In: Schwandt et al. (Eds.): <em>DHd 2026: Nicht nur Text,
                 nicht nur Daten</em>. Vienna 2026. <a href="https://doi.org/10.5281/zenodo.18696203"
-                target="_blank">doi:10.5281/zenodo.18696203</a>
-              <span class="tag">peer-reviewed</span></div>
+                target="_blank">doi:10.5281/zenodo.18696203</a></div>
           </div>
         </div>
         <div class="entry">
@@ -918,26 +440,24 @@
           <div class="entry-content">
             <div class="entry-title">Nicht nur Text, nicht nur Daten … aber was dann? –
               ›Theoretisieren‹ durch Praktiken in der digitalen Editorik, der Digital History und
-              den Computational Literary Studies</div>
+              den Computational Literary Studies <span class="tag">peer-reviewed</span></div>
             <div class="entry-body">With Alexa Lucke, Lisa Eggert, Jonathan D. Geiger, Tessa
               Gengnagel, Jessica Hainke, Philipp Hegel, Silke Schwandt and Christian Wachter. In:
               Schwandt et al. (Eds.): <em>DHd 2026: Nicht nur Text, nicht nur Daten</em>. Vienna
               2026. <a href="https://doi.org/10.5281/zenodo.18696205" target="_blank"
-                >doi:10.5281/zenodo.18696205</a>
-              <span class="tag">peer-reviewed</span></div>
+                >doi:10.5281/zenodo.18696205</a></div>
           </div>
         </div>
         <div class="entry">
           <div class="entry-date">2025</div>
           <div class="entry-content">
             <div class="entry-title">Gender (under) construction: Daten und Diversität im Kontext
-              digitaler Literaturwissenschaft</div>
+              digitaler Literaturwissenschaft <span class="tag">peer-reviewed</span></div>
             <div class="entry-body">With Jana-Katharina Mende, Claudia Resch, Mareike Schumacher,
               Imelda Rohrbacher, Elena Suarez Cronauer, Andrea Gruber and Frederike Neuber. In:
               Reiter et al. (Eds.): <em>DHd 2025: Under Construction</em>. Bielefeld 2025. <a
                 href="https://doi.org/10.5281/zenodo.14943036" target="_blank"
-                >doi:10.5281/zenodo.14943036</a>
-              <span class="tag">peer-reviewed</span></div>
+                >doi:10.5281/zenodo.14943036</a></div>
           </div>
         </div>
         <div class="entry">
@@ -967,11 +487,11 @@
           <div class="entry-content">
             <div class="entry-title">Paradigmen einer digitalen Rezeptionswissenschaft.
               Produktiv-literarische Rezeptionsphänomene als Linked Data am Beispiel der
-              deutschsprachigen literarischen Sappho-Rezeption</div>
+              deutschsprachigen literarischen Sappho-Rezeption
+              <span class="tag">peer-reviewed</span></div>
             <div class="entry-body">In: Weis, Bunout and Haider (Eds.): <em>DHd 2024: DH Quo
                 Vadis</em>. Passau 2024. <a href="https://doi.org/10.5281/zenodo.10698386"
-                target="_blank">doi:10.5281/zenodo.10698386</a>
-              <span class="tag">peer-reviewed</span></div>
+                target="_blank">doi:10.5281/zenodo.10698386</a></div>
           </div>
         </div>
         <div class="entry">
@@ -995,8 +515,9 @@
             <div class="entry-body">With Jonathan D. Geiger, Jessica Hainke, Philipp Hegel and Alexa
               Lucke. <em>Digital Humanities Theorie</em>, 2.6.2026. <a
                 href="https://dhtheorien.hypotheses.org/2442" target="_blank"
-                >dhtheorien.hypotheses.org</a> (also on the blog of the DHd:
-              https://dhd-blog.org/?p=23834) </div>
+                >dhtheorien.hypotheses.org</a> (also on the blog of the DHd: <a
+                href="https://dhd-blog.org/?p=23834" target="_blank"
+                >dhd-blog.org/?p=23834</a>)</div>
           </div>
         </div>
         <div class="entry">
@@ -1025,7 +546,7 @@
           <div class="entry-content">
             <div class="entry-title">INTRO – the Intertextual, Interpictorial, and Intermedial
               Relations Ontology</div>
-            <div class="entry-body">Bernhard Oberreither, with Laura Untner. <a
+            <div class="entry-body">Ontology design with Bernhard Oberreither. <a
                 href="https://w3id.org/lso/intro/beta202506#" target="_blank"
               >w3id.org/lso/intro</a></div>
           </div>
@@ -1071,8 +592,8 @@
         <div class="entry">
           <div class="entry-date">2020</div>
           <div class="entry-content">
-            <div class="entry-title">Roberta Dapunt: <em>die krankheit wunder | le beatitudini della
-                malattia</em></div>
+            <div class="entry-title">Roberta Dapunt: <em><strong>die krankheit wunder | le
+                beatitudini della malattia</strong></em></div>
             <div class="entry-body">Translation from Italian (Versatorium collective, with Julia
               Dengg, Helmut Ege, Aigerim Havranek, Sonja Martinelli, Mathias Müller, Felix
               Reinstadler, Konstantin Schmidtbauer and Peter Waterhouse). Vienna/Bozen: Folio.</div>
@@ -1097,7 +618,7 @@
             <div class="entry-title">Wissensmodellierung als Methode der Weltliteraturforschung.
               Ansatz und Befunde einer Rezeptionsgeschichte am Beispiel »Sappho Digital«</div>
             <div class="entry-body">21st Annual Conference of the German Association for General and
-              Comparative Literature, University of Mainz.</div>
+              Comparative Literature (DGAVL), University of Mainz.</div>
           </div>
         </div>
         <div class="entry">
@@ -1105,8 +626,8 @@
           <div class="entry-content">
             <div class="entry-title">More Semantic Than Lexical: A Formal Ontology Approach to
               Intertextual Relations in the Literary Reception of Sappho</div>
-            <div class="entry-body">Retooling Intertextuality: Digital Humanities and Textual
-              Scholarship, Sorbonne Nouvelle University.</div>
+            <div class="entry-body">Conference »Retooling Intertextuality: Digital Humanities and
+              Textual Scholarship«, Sorbonne Nouvelle University.</div>
           </div>
         </div>
         <div class="entry">
@@ -1119,27 +640,6 @@
           </div>
         </div>
         <div class="entry">
-          <div class="entry-date">10/2025</div>
-          <div class="entry-content">
-            <div class="entry-title">Paradigmen einer digitalen Rezeptionswissenschaft.
-              Produktiv-literarische Rezeptionsphänomene als Linked Data am Beispiel der
-              deutschsprachigen literarischen Sappho-Rezeption</div>
-            <div class="entry-body">Colloquium of the Second Cohort of the Friedrich Schlegel
-              Graduate School of Literary Studies, Freie Universität Berlin.</div>
-          </div>
-        </div>
-        <div class="entry">
-          <div class="entry-date">07/2025</div>
-          <div class="entry-content">
-            <div class="entry-title">Paradigms of Digital Reception Studies: Productive Literary
-              Reception Testimonies as Linked Data Using the Example of the German-Language Literary
-              Reception of Sappho</div>
-            <div class="entry-body">Lightning talk. International Conference »Futures of Doing
-              Literature«, Annual Conference of the Cluster of Excellence »Temporal Communities«
-              (EXC 2020), silent green Kulturquartier, Berlin.</div>
-          </div>
-        </div>
-        <div class="entry">
           <div class="entry-date">03/2025</div>
           <div class="entry-content">
             <div class="entry-title">Sappho Digital</div>
@@ -1149,40 +649,11 @@
           </div>
         </div>
         <div class="entry">
-          <div class="entry-date">01/2025</div>
-          <div class="entry-content">
-            <div class="entry-title">Paradigmen einer digitalen Rezeptionswissenschaft: Die
-              deutschsprachige Sappho-Rezeption als Linked Data</div>
-            <div class="entry-body">Colloquium of the Department of Comparative Literature,
-              University of Vienna.</div>
-          </div>
-        </div>
-        <div class="entry">
           <div class="entry-date">11/2024</div>
           <div class="entry-content">
-            <div class="entry-title">From Myth to Metadata: Mapping Sappho's Legacy Through Linked
+            <div class="entry-title">From Myth to Metadata: Mapping Sappho’s Legacy Through Linked
               Data</div>
             <div class="entry-body">Conference »Linked Open Data and Literary Studies«, Freie
-              Universität Berlin.</div>
-          </div>
-        </div>
-        <div class="entry">
-          <div class="entry-date">10/2024</div>
-          <div class="entry-content">
-            <div class="entry-title">Paradigmen einer digitalen Rezeptionswissenschaft.
-              Produktiv-literarische Rezeptionsphänomene als Linked Data am Beispiel der
-              deutschsprachigen literarischen Sappho-Rezeption</div>
-            <div class="entry-body">Colloquium of the First Cohort of the Friedrich Schlegel
-              Graduate School of Literary Studies, Freie Universität Berlin.</div>
-          </div>
-        </div>
-        <div class="entry">
-          <div class="entry-date">10/2024</div>
-          <div class="entry-content">
-            <div class="entry-title">Paradigmen einer digitalen Rezeptionswissenschaft.
-              Produktiv-literarische Rezeptionsphänomene als Linked Data am Beispiel der
-              deutschsprachigen literarischen Sappho-Rezeption</div>
-            <div class="entry-body">Colloquium »Phänomenologie der Digital Humanities«, Freie
               Universität Berlin.</div>
           </div>
         </div>
@@ -1226,24 +697,6 @@
                 >doi:10.5281/zenodo.10034089</a></div>
           </div>
         </div>
-        <div class="entry">
-          <div class="entry-date">07/2023</div>
-          <div class="entry-content">
-            <div class="entry-title">Paradigms of digital reception studies</div>
-            <div class="entry-body">Workshop »Transatlantic Perspectives on Digital Humanities:
-              Vienna and Rochester«, Schreyogelsaal (Hofburg Vienna).</div>
-          </div>
-        </div>
-        <div class="entry">
-          <div class="entry-date">05/2023</div>
-          <div class="entry-content">
-            <div class="entry-title">Paradigmen einer digitalen Rezeptionswissenschaft.
-              Produktiv-literarische Rezeptionsphänomene als Linked Data am Beispiel der
-              deutschsprachigen literarischen Sappho-Rezeption</div>
-            <div class="entry-body">Public faculty presentation of the dissertation project,
-              University of Vienna.</div>
-          </div>
-        </div>
         <h3 id="other-talks">Other Talks (Selection)</h3>
         <div class="entry">
           <div class="entry-date">10/2026</div>
@@ -1257,7 +710,7 @@
           <div class="entry-date">07/2026</div>
           <div class="entry-content">
             <div class="entry-title">Canons of World Literature Contextualised: Introducing Canon
-              Shelf and Canon Curator </div>
+              Shelf and Canon Curator</div>
             <div class="entry-body">With Lisa Poggel, Viktor J. Illmer, Jonas Rohe and Frank
               Fischer. Digital Humanities 2026 (DH 2026), Daejeon, South Korea.</div>
           </div>
@@ -1266,7 +719,7 @@
           <div class="entry-date">07/2026</div>
           <div class="entry-content">
             <div class="entry-title">Ein literaturwissenschaftliches Semantic Web? Digitale
-              Konstellationen literaturwissenschaftlichen Wissens </div>
+              Konstellationen literaturwissenschaftlichen Wissens</div>
             <div class="entry-body">With Frank Fischer. Colloquium »Phänomenologie der Digital
               Humanities«, Freie Universität Berlin.</div>
           </div>
@@ -1275,7 +728,7 @@
           <div class="entry-date">02/2026</div>
           <div class="entry-content">
             <div class="entry-title">Semantic Modelling of Intermedial and Intertextual References
-              in Comics: A Case Study on Max Baitinger's <em>Sibylla</em> (2021)</div>
+              in Comics: A Case Study on Max Baitinger’s <em><strong>Sibylla</strong></em> (2021)</div>
             <div class="entry-body">With Bernhard Oberreither and Katharina Serles. DHd 2026,
               University of Vienna.</div>
           </div>
@@ -1330,51 +783,8 @@
           <div class="entry-date">06/2024</div>
           <div class="entry-content">
             <div class="entry-title">Karl Kraus und die »Kaffeehausdekadenzmodernen«</div>
-            <div class="entry-body">Symposium »Karl Kraus und die Institutionen«, Wienbibliothek im
-              Rathaus, Vienna.</div>
-          </div>
-        </div>
-        <div class="entry">
-          <div class="entry-date">10/2023</div>
-          <div class="entry-content">
-            <div class="entry-title">Biografische Quellen zu Arthur Schnitzler am ACDH-CH</div>
-            <div class="entry-body">Poster presentation with Martin Anton Müller. Conference
-              »Forschungen zum kulturellen Erbe im digitalen Zeitalter« (ÖAW), Austrian Academy of
-              Sciences, Vienna.</div>
-          </div>
-        </div>
-        <div class="entry">
-          <div class="entry-date">09/2023</div>
-          <div class="entry-content">
-            <div class="entry-title">Die literarische Sappho-Rezeption im deutschsprachigen
-              Raum</div>
-            <div class="entry-body">academy Salon, Salzburg.</div>
-          </div>
-        </div>
-        <div class="entry">
-          <div class="entry-date">06/2023</div>
-          <div class="entry-content">
-            <div class="entry-title">Die literarische Sappho-Rezeption im deutschsprachigen
-              Raum</div>
-            <div class="entry-body">Depot – Kunst und Diskussion, Vienna.</div>
-          </div>
-        </div>
-        <div class="entry">
-          <div class="entry-date">05/2023</div>
-          <div class="entry-content">
-            <div class="entry-title">Arthur Schnitzler: Digitale biographische Korpora und ihre
-              Intersektionen</div>
-            <div class="entry-body">With Martin Anton Müller. Netzwerk Biographieforschung, Austrian
-              Academy of Sciences, Vienna.</div>
-          </div>
-        </div>
-        <div class="entry">
-          <div class="entry-date">04/2023</div>
-          <div class="entry-content">
-            <div class="entry-title">Mit Transkribus zur digitalen Briefedition</div>
-            <div class="entry-body">With Peter Andorfer. Second Research Day of the Austrian Centre
-              for Digital Humanities and Cultural Heritage, Austrian Academy of Sciences,
-              Vienna.</div>
+            <div class="entry-body">Symposium »Karl Kraus und die Institutionen«, Vienna City
+              Library.</div>
           </div>
         </div>
         <div class="entry">
@@ -1390,17 +800,9 @@
           <div class="entry-date">09/2022</div>
           <div class="entry-content">
             <div class="entry-title">»… nicht gewöhnt an diese spröde Materie«. Zur Vermittlung der
-              Rechtsakten Karl Kraus' in der digitalen Edition</div>
+              Rechtsakten Karl Kraus’ in der digitalen Edition</div>
             <div class="entry-body">With Johannes Knüchel. 19th Conference of the Working Group for
               Germanic Editions, University of Klagenfurt.</div>
-          </div>
-        </div>
-        <div class="entry">
-          <div class="entry-date">05/2022</div>
-          <div class="entry-content">
-            <div class="entry-title">Karl Kraus' Rechtsakten der Kanzlei Oskar Samek</div>
-            <div class="entry-body">Final presentation of the FWF project »Intertextuality in the
-              Legal Papers of Karl Kraus«, Vienna City Library.</div>
           </div>
         </div>
       </section>
@@ -1411,7 +813,9 @@
           <div class="entry-date">WS 2026/27</div>
           <div class="entry-content">
             <div class="entry-title">Sappho im Drama: Intertextualität und digitale Methoden</div>
-            <div class="entry-body">With Frank Fischer. Freie Universität Berlin.</div>
+            <div class="entry-body">With Frank Fischer. Freie Universität Berlin. <a
+                href="https://www.fu-berlin.de/vv/de/lv/1110432?m=346453&amp;pc=473041&amp;sm=1039762"
+                target="_blank">Course page</a></div>
           </div>
         </div>
         <div class="entry">
@@ -1420,15 +824,19 @@
             <div class="entry-title">Transkribus in den Digital Humanities: KI-gestützte Layout- und
               Texterkennung</div>
             <div class="entry-body">With Claudia Resch, Robert Klugseder and Nina Rastinger.
-              University of Vienna.</div>
+              University of Vienna. <a
+                href="https://ufind.univie.ac.at/de/course.html?lv=136208&amp;semester=2024W"
+                target="_blank">Course page</a></div>
           </div>
         </div>
         <div class="entry">
           <div class="entry-date">SS 2023</div>
           <div class="entry-content">
             <div class="entry-title">Digitale Literaturwissenschaft: Einführung in die Text Encoding
-              Initiative (TEI) </div>
-            <div class="entry-body">With Paula Wojcik. University of Vienna.</div>
+              Initiative (TEI)</div>
+            <div class="entry-body">With Paula Wojcik. University of Vienna. <a
+                href="https://ufind.univie.ac.at/de/course.html?lv=135044&amp;semester=2023S"
+                target="_blank">Course page</a></div>
           </div>
         </div>
       </section>
@@ -1440,7 +848,9 @@
           <div class="entry-content">
             <div class="entry-title">Anti-Konferenz: Scheitern in den Digital Humanities</div>
             <div class="entry-body">With Henny Sluyter-Gäthje, Ruth Sander, Johannes Ionnau and Mark
-              Schwindt. Conference, 2 October 2026, Mehringhof (Berlin).</div>
+              Schwindt. Conference, 2 October 2026, Mehringhof (Berlin). <a
+                href="https://junge-dh-berlin-brandenburg.github.io/termine/konferenzen/antikonferenz/Programm_Antikonferenz.html"
+                target="_blank">Programme</a></div>
           </div>
         </div>
         <div class="entry">
@@ -1449,7 +859,9 @@
             <div class="entry-title">Digitale Horizonte von Weltliteratur</div>
             <div class="entry-body">With Marie-Christine Boucher, Nils Kellner and Jana-Katharina
               Mende. Panel at the 21st Annual Conference of the German Association for General and
-              Comparative Literature, 15 September 2026, University of Mainz.</div>
+              Comparative Literature (DGAVL), 15 September 2026, University of Mainz. <a
+                href="https://www.avl.uni-mainz.de/wp-content/uploads/sites/261/2026/08/Panel_DigitaleHorizonteWeltliteratur_Update.pdf"
+                target="_blank">Programme (PDF)</a></div>
           </div>
         </div>
         <div class="entry">
@@ -1459,83 +871,12 @@
             <div class="entry-body">With Julia Jennifer Beine, Ingo Börner, Frank Fischer, Luca
               Giovannini, Carsten Milling, Antonio Rojas Castro, Mark Schwindt, Daniil Skorinkin,
               Henny Sluyter-Gäthje and Peer Trilcke. Conference, 1 to 5 September 2025, Freie Universität
-              Berlin.</div>
+              Berlin. <a href="https://summit.dracor.org/" target="_blank">summit.dracor.org</a></div>
           </div>
         </div>
       </section>
     </div>
     <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top"></button>
-    <script>
-      (function () {
-        const navLinks = Array.from(document.querySelectorAll('nav a'));
-        const sections = Array.from(document.querySelectorAll('.page > section'));
-        const subnav = document.querySelector('.subnav');
-
-        let renderedFor = null;
-
-        function renderSubnav(section) {
-          if (renderedFor === section) return;
-          renderedFor = section;
-          subnav.innerHTML = '';
-          section.querySelectorAll('h3').forEach((h) => {
-            const a = document.createElement('a');
-            a.href = '#' + h.id;
-            a.textContent = h.textContent;
-            subnav.appendChild(a);
-          });
-        }
-
-        const sectionObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (!entry.isIntersecting) return;
-              const href = '#' + entry.target.id;
-              navLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === href));
-              renderSubnav(entry.target);
-            });
-          },
-          { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
-        );
-
-        sections.forEach((section) => sectionObserver.observe(section));
-
-        const subheaders = Array.from(document.querySelectorAll('h3'));
-        const subheaderObserver = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (!entry.isIntersecting) return;
-              const link = subnav.querySelector(`a[href="#${entry.target.id}"]`);
-              if (!link) return;
-              subnav.querySelectorAll('a').forEach((a) => a.classList.remove('active'));
-              link.classList.add('active');
-            });
-          },
-          { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
-        );
-
-        subheaders.forEach((h) => subheaderObserver.observe(h));
-      })();
-
-      // Open external links safely: avoid giving the target page a handle on `window.opener`.
-      document.querySelectorAll('a[target="_blank"]').forEach((a) => {
-        a.rel = 'noopener noreferrer';
-      });
-
-      (function () {
-        const backToTop = document.getElementById('backToTop');
-
-        window.addEventListener(
-          'scroll',
-          () => {
-            backToTop.classList.toggle('visible', window.scrollY > 600);
-          },
-          { passive: true }
-        );
-
-        backToTop.addEventListener('click', () => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-      })();
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
