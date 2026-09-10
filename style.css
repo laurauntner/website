@@ -163,6 +163,23 @@ h1 {
   border-color: var(--accent-line);
 }
 
+.social-icons {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.1rem;
+}
+
+.social-icons a {
+  display: inline-flex;
+  color: var(--muted);
+  padding: 0;
+  border: none;
+}
+
+.social-icons a:hover {
+  color: var(--accent);
+}
+
 /* ---------- Nav ---------- */
 .site-nav {
   position: sticky;
